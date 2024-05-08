@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi Metro Navigator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c58add7555.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header>
+    <button class="toggle-btn">&#9776;</button>
+    <h2>Delhi Metro Navigator</h2>
+</header>
+
+<div class="container">
+    <nav>
+        <button class="close-btn">&times;</button>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Fare</a></li>
+            <li><a href="#">Map</a></li>
+            <li><a href="#">Route</a></li>
+            <li><a href="#">First/Last Metro</a></li>
+            <li><a href="#">Upcoming Metro</a></li>
+            <li><a href="#">Card Recharge</a></li>
+            <li><a href="#">Parking</a></li>
+            <li><a href="#">Gates and Direction</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+    </nav>
+</div>
+<section class="alert">
+    <div class="offer">
+        <i class="fa-solid fa-percent"></i>
+        <div class="timer">
+            <h5>+10% Extra Discount for Smart Card Entry STARTS in</h5>
+            <div id="countdown" class="countdown"></div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-house"></i>
+        <p>Home</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <p>Fare</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <p>Map</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-route"></i>
+        <p>Route</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-clock"></i>
+        <p>First/Last Metro</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-arrow-down-up-across-line"></i>
+        <p>Upcoming Metro</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-credit-card"></i>
+        <p>Card Recharge</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-car"></i>
+        <p>Parking</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-arrows-turn-right"></i>
+        <p>Gates and Direction</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-users"></i>
+        <p>About</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-envelope"></i>
+        <p>Feedback</p>
+    </div>
+    <div class="btn-wrapper">
+        <i class="fa-solid fa-thumbs-up"></i>
+        <p>Like this Web</p>
+    </div>
+</section>
+
+
+<script>// Set the date we're counting down to
+    var countDownDate = new Date().getTime() + 3600000; // Current time + 1 hour
+    
+    // Update the countdown every second
+    var x = setInterval(function() {
+    
+        // Get the current time
+        var now = new Date().getTime();
+    
+        // Calculate the remaining time
+        var distance = countDownDate - now;
+    
+        // Time calculations for hours, minutes, and seconds
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+        // Display the result in the element with id="countdown"
+        document.getElementById("countdown").innerHTML = 
+            "<span>" + pad(hours) + "</span>" + 
+            "<span>:</span>" + 
+            "<span>" + pad(minutes) + "</span>" + 
+            "<span>:</span>" + 
+            "<span>" + pad(seconds) + "</span>";
+    
+        // If the countdown is over, display text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+    
+    // Function to pad single digits with leading zero
+    function pad(n) {
+        return (n < 10 ? '0' : '') + n;
+    }
+    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const closeBtn = document.querySelector('.close-btn');
+        const nav = document.querySelector('nav');
+
+        toggleBtn.addEventListener('click', () => {
+            nav.classList.add('show');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            nav.classList.remove('show');
+        });
+    });
+</script>
+
+</body>
+</html>
